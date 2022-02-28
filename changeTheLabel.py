@@ -14,6 +14,7 @@ for d in dirs[0]:
 for i in range(len(target_file)):
     df = pd.read_csv(target_file[i])
     df['Species Desc'] = df['Species Desc'].apply(lambda x: 'fly' if ('Flying' in x)or('Wings Spread' in x)or('Flight' in x) else x)
-    df.drop(index=(df.loc[(df['Species Desc']=='Great Blue Heron Egg')].index))
-    df.drop(index=(df.loc[(df['Species Desc'] == 'Great Blue Heron Nest')].index))
-    df.drop(index=(df.loc[(df['Species Desc']=='White Ibis Nest')].index))
+    # df.drop(index=(df.loc[(df['Species Desc']=='Great Blue Heron Egg')].index))
+    # df.drop(index=(df.loc[(df['Species Desc'] == 'Great Blue Heron Nest')].index))
+    # df.drop(index=(df.loc[(df['Species Desc']=='White Ibis Nest')].index))
+    df.drop(index=(df.loc[(df['Species Desc'].apply(lambda x: 'Egg' in x or 'Nest' in x))].index))
